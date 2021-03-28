@@ -61,7 +61,7 @@ class Api {
     }
 
     putLike(card, isLiked) {
-        return fetch(`${this._url}/cards/likes/${card}`, {
+        return fetch(`${this._url}/cards/${card}/likes`, {
             method: isLiked ? "DELETE" : "PUT",
             headers: this._headers
         })
@@ -84,7 +84,7 @@ const api = new Api ({
     url: "https://api.project.mesto.nomoredomains.icu",
     headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem('token')}`
+        "Authorization": `Bearer ${localStorage.getItem('jwt')}`
     }
 });
 

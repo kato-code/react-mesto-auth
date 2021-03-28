@@ -55,7 +55,7 @@ function App() {
                 setCurrentUser(UserData)
                 setCards(InitialCards)
             })
-            .catch((error) => console.error(error))
+            .catch((error) => console.log(error))
     }, [])
 
     //проверка токена авторизованных юзеров
