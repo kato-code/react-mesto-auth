@@ -80,10 +80,16 @@ class Api {
     }
 }
 
+// const api = new Api ({
+//     url: "https://mesto.nomoreparties.co/v1/cohort-18",
+//     headers: {
+//         authorization: "ee7d3d7a-088a-4faf-a6a4-125e05d2a819",
+//         "Content-Type": "application/json"
+//     }
+// });
 const api = new Api ({
-    url: "https://mesto.nomoreparties.co/v1/cohort-18",
+    url: "http://localhost:3000",
     headers: {
-        authorization: "ee7d3d7a-088a-4faf-a6a4-125e05d2a819",
         "Content-Type": "application/json"
     }
 });
