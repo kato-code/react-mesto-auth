@@ -88,7 +88,7 @@ class Api {
 //     }
 // });
 const api = new Api ({
-    url: "http://localhost:3000",
+    url: "https://api.project.mesto.nomoredomains.icu",
     headers: {
         "Content-Type": "application/json"
     }
