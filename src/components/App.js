@@ -49,33 +49,15 @@ function App() {
 
 
     //получение данных профиля и карточек
-    // React.useEffect(() => {
-    //     Promise.all([api.getUserData(), api.getInitialCards()])
-    //         .then(([UserData, InitialCards]) => {
-    //             setCurrentUser(UserData)
-    //             setCards(InitialCards)
-    //         })
-    //         .catch((error) => console.error(error))
-    // }, [])
     React.useEffect(() => {
-        if (loggedIn) {
-          api.getUserData()
-            .then((res) => {
-              setCurrentUser(res.data);
+        Promise.all([api.getUserData(), api.getInitialCards()])
+            .then(([UserData, InitialCards]) => {
+                setCurrentUser(UserData)
+                setCards(InitialCards)
             })
-            .catch(err => console.log(`Ошибка при обращении за информацией о пользователе: ${err.message}`))
-        }
-      }, [loggedIn]);
+            .catch((error) => console.error(error))
+    }, [])
 
-    React.useEffect(() => {
-    if (loggedIn) {
-        api.getInitialCards()
-            .then((res) => {
-              setCards(res);
-            })
-            .catch(err => console.log(`Ошибка при запросе начальных карточек: ${err}`))
-        }
-      }, [loggedIn]);
     //проверка токена авторизованных юзеров
     function handleTokenCheck() {
         if (localStorage.getItem('jwt')) {
