@@ -4,13 +4,6 @@ class Api {
         this._headers = config.headers;
     }
 
-    setHeadersToken (token) {
-        this._headers = {
-            ...this._headers,
-            authorization: `Bearer ${token}`,
-        }
-    }
-
     statusResponse(res) {
         if (res.ok) {
             return res.json();
@@ -91,7 +84,7 @@ const api = new Api ({
     url: "https://api.project.mesto.nomoredomains.icu",
     headers: {
         "Content-Type": "application/json",
-        // "Authorization": `Bearer ${localStorage.getItem('token')}`
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
     }
 });
 
