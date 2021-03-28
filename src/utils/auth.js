@@ -1,4 +1,3 @@
-// export const BASE_URL = 'https://auth.nomoreparties.co';
 export const BASE_URL = "https://api.project.mesto.nomoredomains.icu";
 
 export function register(email, password) {
