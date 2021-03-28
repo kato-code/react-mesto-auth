@@ -1,7 +1,7 @@
 class Api {
     constructor(config) {
-        this._url = config.url;
-        this._headers = config.headers;
+        this.url = config.url;
+        this.headers = config.headers;
     }
 
     statusResponse(res) {
@@ -13,25 +13,25 @@ class Api {
     }
 
     getUserData() {
-        return fetch(`${this._url}/users/me`, {
+        return fetch(`${this.url}/users/me`, {
             method: "GET",
-            headers: this._headers
+            headers: this.headers
         })
         .then(this.statusResponse)
     }
 
     getInitialCards() {
-        return fetch(`${this._url}/cards`, {
+        return fetch(`${this.url}/cards`, {
             method: "GET",
-            headers: this._headers
+            headers: this.headers
         })
         .then(this.statusResponse)
     }
 
     updateUserData(data) {
-        return fetch(`${this._url}/users/me`, {
+        return fetch(`${this.url}/users/me`, {
             method: "PATCH",
-            headers: this._headers,
+            headers: this.headers,
             body: JSON.stringify({
                 name: data.name,
                 about: data.profession
@@ -41,9 +41,9 @@ class Api {
     }
     
     addNewPlace(data) {
-        return fetch(`${this._url}/cards`, {
+        return fetch(`${this.url}/cards`, {
             method: "POST",
-            headers: this._headers,
+            headers: this.headers,
             body: JSON.stringify({
                 name: data.name,
                 link: data.link
@@ -53,25 +53,25 @@ class Api {
     }
 
     deleteCard(_id) {
-        return fetch(`${this._url}/cards/${_id}`, {
+        return fetch(`${this.url}/cards/${_id}`, {
             method: "DELETE",
-            headers: this._headers
+            headers: this.headers
         })
         .then(this.statusResponse)
     }
 
     putLike(card, isLiked) {
-        return fetch(`${this._url}/cards/likes/${card}`, {
+        return fetch(`${this.url}/cards/likes/${card}`, {
             method: isLiked ? "DELETE" : "PUT",
-            headers: this._headers
+            headers: this.headers
         })
         .then(this.statusResponse)
     }
 
     updateUserAvatar(data) {
-        return fetch(`${this._url}/users/me/avatar`, {
+        return fetch(`${this.url}/users/me/avatar`, {
             method: "PATCH",
-            headers: this._headers,
+            headers: this.headers,
             body: JSON.stringify({
                 avatar: data.avatar
             })
