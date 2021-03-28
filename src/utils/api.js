@@ -1,7 +1,7 @@
 class Api {
     constructor(config) {
-        this._url = config.url;
-        this._headers = config.headers;
+        this.url = config.url;
+        this.headers = config.headers;
     }
 
     statusResponse(res) {
@@ -13,7 +13,7 @@ class Api {
     }
 
     getUserData() {
-        return fetch(`${this._url}/users/me`, {
+        return fetch(`${this.url}/users/me`, {
             method: "GET",
             headers: this._headers
         })
@@ -21,7 +21,7 @@ class Api {
     }
 
     getInitialCards() {
-        return fetch(`${this._url}/cards`, {
+        return fetch(`${this.url}/cards`, {
             method: "GET",
             headers: this._headers
         })
