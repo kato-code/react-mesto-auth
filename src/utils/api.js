@@ -1,7 +1,7 @@
 class Api {
     constructor(config) {
-        this.url = config.url;
-        this.headers = config.headers;
+        this._url = config.url;
+        this._headers = config.headers;
     }
 
     statusResponse(res) {
@@ -13,25 +13,25 @@ class Api {
     }
 
     getUserData() {
-        return fetch(`${this.url}/users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: "GET",
-            headers: this.headers
+            headers: this._headers
         })
         .then(this.statusResponse)
     }
 
     getInitialCards() {
-        return fetch(`${this.url}/cards`, {
+        return fetch(`${this._url}/cards`, {
             method: "GET",
-            headers: this.headers
+            headers: this._headers
         })
         .then(this.statusResponse)
     }
 
     updateUserData(data) {
-        return fetch(`${this.url}/users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: "PATCH",
-            headers: this.headers,
+            headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
                 about: data.profession
@@ -41,9 +41,9 @@ class Api {
     }
     
     addNewPlace(data) {
-        return fetch(`${this.url}/cards`, {
+        return fetch(`${this._url}/cards`, {
             method: "POST",
-            headers: this.headers,
+            headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
                 link: data.link
@@ -53,25 +53,25 @@ class Api {
     }
 
     deleteCard(_id) {
-        return fetch(`${this.url}/cards/${_id}`, {
+        return fetch(`${this._url}/cards/${_id}`, {
             method: "DELETE",
-            headers: this.headers
+            headers: this._headers
         })
         .then(this.statusResponse)
     }
 
     putLike(card, isLiked) {
-        return fetch(`${this.url}/cards/likes/${card}`, {
+        return fetch(`${this._url}/cards/likes/${card}`, {
             method: isLiked ? "DELETE" : "PUT",
-            headers: this.headers
+            headers: this._headers
         })
         .then(this.statusResponse)
     }
 
     updateUserAvatar(data) {
-        return fetch(`${this.url}/users/me/avatar`, {
+        return fetch(`${this._url}/users/me/avatar`, {
             method: "PATCH",
-            headers: this.headers,
+            headers: this._headers,
             body: JSON.stringify({
                 avatar: data.avatar
             })
@@ -88,7 +88,7 @@ class Api {
 //     }
 // });
 const api = new Api ({
-    url: "https://api.project.mesto.nomoredomains.icu",
+    url: "https://project.mesto.nomoredomains.icu",
     headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('token')}`
