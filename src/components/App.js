@@ -49,15 +49,28 @@ function App() {
 
 
     //получение данных профиля и карточек
+    // React.useEffect(() => {
+    //     Promise.all([api.getUserData(), api.getInitialCards()])
+    //         .then(([UserData, InitialCards]) => {
+    //             setCurrentUser(UserData)
+    //             setCards(InitialCards)
+    //         })
+    //         .catch((error) => console.error(error))
+    // }, [])
     React.useEffect(() => {
+        const token = localStorage.getItem('jwt');
+        if (!token) {
+            return
+        }
+        api.setHeadersToken(token);
+
         Promise.all([api.getUserData(), api.getInitialCards()])
             .then(([UserData, InitialCards]) => {
                 setCurrentUser(UserData)
                 setCards(InitialCards)
             })
             .catch((error) => console.error(error))
-    }, [])
-
+    }, [loggedIn]);
     //проверка токена авторизованных юзеров
     function handleTokenCheck() {
         if (localStorage.getItem('jwt')) {
