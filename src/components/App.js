@@ -67,7 +67,7 @@ function App() {
                 .then((res) => {
                     if (res) {
                         setLoggedIn(true)
-                        setUserEmail(res.data.email)
+                        setUserEmail(res.email)
                         history.push('/');
                     }
                 })
@@ -217,7 +217,7 @@ function App() {
 
     //поставить лайк/дизлайк
     function handleCardLike(card) {
-        const isLiked = card.likes.some(i => i._id === currentUser._id)
+        const isLiked = card.likes.some(i => i === currentUser._id)
 
         api.putLike(card._id, isLiked)
             .then((newCard) => {
