@@ -71,7 +71,7 @@ function App() {
                         history.push('/');
                     }
                 })
-                .catch((error) => console.log(`Ошибка при запросе токена: ${error.message}`))
+                .catch((error) => console.log(`Ошибка при запросе токена: ${error}`))
         }
     }
 
@@ -99,13 +99,7 @@ function App() {
             })
             .catch((error) => {
                 handleInfoTooltip(false)
-                // if (error === 'Error 400') {
-                //     return console.log('Не верно заполнено одно из полей')
-                // }
-                // if (error === 'Error 401') {
-                //     return console.log('Неправильные почта или пароль')
-                // }
-                console.log(`Ошибка при авторизации: ${error.message}`)
+                console.log(`Ошибка при авторизации: ${error}`)
             })
     }
 
