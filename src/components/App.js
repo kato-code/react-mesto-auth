@@ -187,7 +187,7 @@ function App() {
 
     //обновить данные профиля
     function handleUpdateProfile(data) {
-        api.getUserData(data)
+        api.updateUserData(data)
             .then(() => {
                 setCurrentUser({...currentUser, ...data})
                 closeAllPopups()
