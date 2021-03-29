@@ -98,8 +98,14 @@ function App() {
                 }
             })
             .catch((error) => {
-                console.log(`Ошибка при авторизации: ${error.message}`)
                 handleInfoTooltip(false)
+                // if (error === 'Error 400') {
+                //     return console.log('Не верно заполнено одно из полей')
+                // }
+                // if (error === 'Error 401') {
+                //     return console.log('Неправильные почта или пароль')
+                // }
+                console.log(`Ошибка при авторизации: ${error.message}`)
             })
     }
 
@@ -113,8 +119,8 @@ function App() {
                 } 
             })
             .catch((error) => {
-                console.log(`Ошибка при регистрации: ${error.message}`)
                 handleInfoTooltip(false)
+                console.log(`Ошибка при регистрации: ${error}`)
             })
     }
 
